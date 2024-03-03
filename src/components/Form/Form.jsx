@@ -11,6 +11,7 @@ export const Form = () => {
     event.preventDefault();
     const inputValue = event.target.search.value;
     dispatch(addTodo({ text: inputValue }));
+    event.target.reset();
   };
 
   return (
