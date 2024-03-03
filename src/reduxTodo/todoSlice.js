@@ -16,7 +16,7 @@ const todoSlice = createSlice({
       },
     },
     deleteTodo: (state, action) => {
-      state.items = state.items.filter(item => item.id !== action.payload.id);
+      state.items = state.items.filter(item => item.id !== action.payload);
     },
   },
   selectors: {
@@ -24,5 +24,12 @@ const todoSlice = createSlice({
   },
 });
 
-export const todoListReducer = todoSlice.reducer;
-export const { selectTodos } = todoSlice.selectors;
+export const {
+  // selectors: { selectTodos },
+  actions: { addTodo, deleteTodo },
+  reducer: todoListReducer,
+} = todoSlice;
+
+export const selectTodos = state => {
+  return state.todos.items
+}
